@@ -38,14 +38,18 @@ Before cancelling, replace the Owlstown front page with a one-line note pointing
 
 ## Adding a paper
 
-Papers live in `research.html` and appear twice: once under their topic (with an "In simple words" box) and once in the "All papers" list. Add a new paper in both places: copy an existing `<li class="paper">…</li>` block under the right topic, and a copy without the `<details>` box into the "All papers" list. When a preprint is accepted, replace "Preprint, 2026" with the venue in both places, update the paper count on that topic's card on the home page, and add a line to "What's new".
+Papers live in `research.html`, in the "Papers" list (newest first). To add one, copy an existing `<li class="paper">…</li>` block and change it:
 
-## The research map
+- `id="..."` is a short name for the paper. The overview at the top of the page and the home page link to it as `#that-name`.
+- `data-tags="..."` lists its topics, separated by spaces: `streaming`, `communication`, `queries`, `polynomials`. These drive the filter buttons. Also update the visible `<span class="tag ...">` labels to match.
+- The `<details class="simple">` box holds the "In simple words" explanation.
 
-The boxes on the home page are in `index.html` under "Questions I care about". Each links to a section of `research.html` by its id (`#streaming`, `#access`). To add a topic, add a box there and a matching `<section class="topic" id="...">` in `research.html`. On phones the boxes stack and the connecting label is hidden.
+When a preprint is accepted, replace "Preprint, 2026" with the venue, and add a line to "What's new" on the home page.
+
+## The overview
+
+"What I work on" at the top of `research.html` is three short sections (streaming, communication, queries and polynomials). Each mentions papers with links like `<a href="#random-order">…</a>`, so one paper can come up in more than one section. Each section has an "Explain it simply" box.
 
 ## Simple explanations
 
-Each topic and paper has a `<details class="simple">` block. Readers open them one by one, or all at once with the "open all simple explanations" button at the top of the research page.
-
-
+Every overview section and every paper has a `<details class="simple">` block. Readers open them one by one, or all at once with the "open all simple explanations" button at the top of the research page.
