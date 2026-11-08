@@ -29,19 +29,23 @@
 <main class="wrap">
 <section class="page-head">
   <h1>Research</h1>
-  <p class="lede">
-    I study quantum computation when resources are tight: little memory, few questions, short messages.
-    Below is a short overview of how my projects fit together, followed by the list of papers.
-    Every part has a plain-language explanation if you want one.
-  </p>
-  <p class="note">Jump to <a href="#papers">the papers</a>. Also on
-    <a href="https://dblp.org/pid/342/2870">dblp</a> and
-    <a href="https://arxiv.org/search/?searchtype=author&amp;query=Voronova%2C+Nadezhda">arXiv</a>.
-    <button type="button" class="simple-all" aria-pressed="false">open all simple explanations</button></p>
+  <p class="lede">I study quantum computation when resources are tight: little memory, few questions, short messages.</p>
+  <nav class="choose" aria-label="Choose a view">
+    <a class="choice" href="#overview" data-view="overview" aria-current="true">
+      <span class="choice-title">Topics</span>
+      <span class="choice-text">What I work on and how my projects fit together, with simple explanations.</span>
+    </a>
+    <a class="choice" href="#papers" data-view="papers">
+      <span class="choice-title">List of papers</span>
+      <span class="choice-text">All my papers, newest first, with links and filters by topic.</span>
+    </a>
+  </nav>
 </section>
 
-<section class="story" id="story">
+<div class="view" id="overview">
+<section class="story">
   <h2>What I work on</h2>
+  <p class="note"><button type="button" class="simple-all" aria-pressed="false">open all simple explanations</button></p>
 
   <div class="chapter s">
     <h3>Quantum memory in streaming</h3>
@@ -100,10 +104,11 @@
     </div></details>
   </div>
 </section>
+</div>
 
-<section class="papers-block" id="papers">
+<section class="view papers-block" id="papers">
   <h2>Papers</h2>
-  <p class="note">Authors are in alphabetical order, as usual in theory.</p>
+  <p class="note">Authors are in alphabetical order, as usual in theory. Also on <a href="https://dblp.org/pid/342/2870">dblp</a> and <a href="https://arxiv.org/search/?searchtype=author&amp;query=Voronova%2C+Nadezhda">arXiv</a>.</p>
   <div class="filters" role="group" aria-label="Filter papers by topic"><button type="button" data-filter="all" aria-pressed="true">All</button><button type="button" data-filter="streaming" aria-pressed="false" class="streaming">Streaming</button><button type="button" data-filter="communication" aria-pressed="false" class="communication">Communication</button><button type="button" data-filter="queries" aria-pressed="false" class="queries">Queries</button><button type="button" data-filter="polynomials" aria-pressed="false" class="polynomials">Polynomials</button></div>
   <ol class="papers">
     <li class="paper" id="random-order" data-tags="streaming communication">
@@ -201,14 +206,27 @@
     simpleBtn.setAttribute('aria-pressed', String(open));
     simpleBtn.textContent = open ? 'close all simple explanations' : 'open all simple explanations';
   });
-  // Open the simple explanation of a paper when someone arrives at it from a link in the story.
-  function flash() {
-    var el = location.hash && document.getElementById(location.hash.slice(1));
-    if (el && el.classList.contains('paper')) {
-      el.classList.remove('flash'); void el.offsetWidth; el.classList.add('flash');
+  // Two views: the overview (#overview) and the paper list (#papers). Links to a paper (#bhm etc.) open the list.
+  var views = { overview: document.getElementById('overview'), papers: document.getElementById('papers') };
+  var choices = document.querySelectorAll('.choice');
+  function route(scroll) {
+    var id = location.hash.slice(1) || 'overview';
+    var target = document.getElementById(id);
+    var view = (target && views.papers.contains(target)) ? 'papers' : 'overview';
+    views.overview.hidden = view !== 'overview';
+    views.papers.hidden = view !== 'papers';
+    choices.forEach(function (c) {
+      if (c.dataset.view === view) c.setAttribute('aria-current', 'true'); else c.removeAttribute('aria-current');
+    });
+    if (target && target.classList.contains('paper')) {
+      target.scrollIntoView();
+      target.classList.remove('flash'); void target.offsetWidth; target.classList.add('flash');
+    } else if (scroll) {
+      document.querySelector('.choose').scrollIntoView();
     }
   }
-  window.addEventListener('hashchange', flash); flash();
+  window.addEventListener('hashchange', function () { route(true); });
+  route(false);
 })();
 </script>
 </body>

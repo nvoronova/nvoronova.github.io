@@ -46,9 +46,11 @@ Papers live in `research.html`, in the "Papers" list (newest first). To add one,
 
 When a preprint is accepted, replace "Preprint, 2026" with the venue, and add a line to "What's new" on the home page.
 
-## The overview
+## The research page
 
-"What I work on" at the top of `research.html` is three short sections (streaming, communication, queries and polynomials). Each mentions papers with links like `<a href="#random-order">…</a>`, so one paper can come up in more than one section. Each section has an "Explain it simply" box.
+The page opens with two cards, "Topics" and "List of papers". Each shows one view and hides the other. The views are `<div class="view" id="overview">` and `<section class="view papers-block" id="papers">`. A link to `research.html#papers` opens the list, and a link to a single paper (for example `research.html#bhm`) opens the list and highlights that paper. Without JavaScript both views are simply shown one after the other.
+
+"What I work on" in the Topics view is three short sections (streaming, communication, queries and polynomials). Each mentions papers with links like `<a href="#random-order">…</a>`, so one paper can come up in more than one section. Each section has an "Explain it simply" box.
 
 ## Simple explanations
 
