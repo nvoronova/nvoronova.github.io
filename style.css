@@ -193,8 +193,8 @@ details.abstract summary {
   cursor: pointer; list-style: none; font-family: var(--sans); font-size: 0.95rem; color: var(--ink); padding: 0.3rem 0.8rem;
 }
 details.abstract summary::-webkit-details-marker { display: none; }
-details.abstract summary::before { content: "+ "; }
-details.abstract[open] summary::before { content: "− "; }
+details.abstract summary::before { content: "+"; }
+details.abstract[open] summary::before { content: "−"; }
 details.abstract > div { padding: 0 1rem 0.75rem; font-size: 0.95rem; }
 details.abstract > div p:last-child { margin-bottom: 0; }
 .abstract-link {
@@ -202,6 +202,20 @@ details.abstract > div p:last-child { margin-bottom: 0; }
   border-left: 3px solid var(--muted); background: var(--tint); border-radius: 0 10px 10px 0;
 }
 .katex { font-size: 1.02em; }
+
+/* Abstract and In simple words look the same apart from colour and typeface */
+.more details summary { min-height: 2.1rem; display: flex; align-items: center; padding: 0 0.8rem; line-height: 1; }
+.more details.abstract summary { font-size: 1rem; }
+.more details.simple summary { font-size: 1.3rem; }
+.more details > div { padding: 0.25rem 1rem 0.8rem; font-size: 0.98rem; line-height: 1.6; }
+.more details.abstract, .more details.simple { margin: 0; }
+.more details summary::before { margin-right: 0.35em; }
+.more .abstract-link { min-height: 2.1rem; display: inline-flex; align-items: center; font-size: 1rem; }
+
+.order-note {
+  font-family: var(--sans); font-size: 0.98rem; margin: 0 0 0.4rem;
+  padding: 0.5rem 0.8rem; border-radius: 10px; background: var(--tint); border: 1px solid var(--rule);
+}
 
 /* Plain lists */
 .plain { padding-left: 1.1rem; margin: 0 0 1rem; }
