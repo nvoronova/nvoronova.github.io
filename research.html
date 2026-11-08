@@ -1,0 +1,254 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Research | Nadya Voronova</title>
+  <meta name="description" content="Research of Nadya Voronova, with plain-language explanations: quantum streaming, communication complexity, quantum query complexity.">
+  <meta property="og:title" content="Research | Nadya Voronova">
+  <meta property="og:description" content="Research of Nadya Voronova, with plain-language explanations: quantum streaming, communication complexity, quantum query complexity.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Caveat:wght@500;600&family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='13' fill='none' stroke='%232456c9' stroke-width='4'/%3E%3C/svg%3E">
+</head>
+<body>
+
+<header class="wrap top">
+  <a class="home-link" href="index.html">Nadya Voronova</a>
+  <nav class="nav" aria-label="Main">
+    <a href="index.html">Home</a>
+    <a href="research.html" aria-current="page">Research</a>
+    <a href="talks.html">Talks</a>
+    <a href="teaching.html">Teaching</a>
+    <a href="cv.pdf">CV</a>
+  </nav>
+</header>
+
+<main class="wrap">
+<section class="page-head">
+  <h1>Research</h1>
+  <p class="lede">
+    I study quantum computation when resources are tight. Below are my papers, grouped by the question
+    they are about, with a short plain-language explanation for each. If you just want the list,
+    switch to “All papers”.
+  </p>
+  <p class="note">Authors are in alphabetical order, as usual in theory. Also on
+    <a href="https://dblp.org/pid/342/2870">dblp</a> and
+    <a href="https://arxiv.org/search/?searchtype=author&amp;query=Voronova%2C+Nadezhda">arXiv</a>.</p>
+  <div class="controls">
+    <div class="switch" role="group" aria-label="View">
+      <button type="button" data-view="topics" aria-pressed="true">By topic</button>
+      <button type="button" data-view="all" aria-pressed="false">All papers</button>
+    </div>
+    <button type="button" class="simple-all" aria-pressed="false">open all simple explanations</button>
+  </div>
+</section>
+
+<div id="view-topics">
+<section class="topic s" id="streaming">
+  <h2>Quantum streaming</h2>
+  <p class="question">What can a few qubits remember that a huge classical memory cannot?</p>
+  <p>In the streaming model the input goes past once and is far too large to store.
+       The question is how much memory you need to answer something about it. For some problems a small
+       quantum memory is exponentially better than any classical one, and for others it does not help at all.
+       I look for natural problems with a quantum advantage, build tools that make quantum streaming
+       algorithms easier to design, and study how the order in which the input arrives changes the answer.</p>
+  <details class="simple"><summary>Explain it simply</summary><div><p>Someone reads you a very long list, once, and you only have a tiny notebook.
+       You cannot write everything down, but later you will be asked a question about the whole list.
+       Which questions can you still answer?</p>
+       <p>A quantum notebook works differently from a paper one. A few qubits can hold a summary that mixes
+       many items together. You can only read a little of it back, but for some questions that little is
+       exactly what you need. Then a handful of qubits does the job of an enormous paper notebook.</p></div></details>
+  <ol class="papers">
+    <li class="paper">
+      <p class="title"><a href="https://arxiv.org/abs/2610.06727">Random Order in Quantum Streaming: Replenishment and Robust Lower Bounds</a><span class="hand solo">solo!</span></p>
+      <p class="authors"><span class="me">Nadezhda Voronova</span></p>
+      <p class="venue">Preprint, 2026</p>
+      <p class="plinks"><a href="https://arxiv.org/abs/2610.06727">arXiv</a> <a href="https://arxiv.org/pdf/2610.06727">PDF</a></p>
+      <details class="simple"><summary>In simple words</summary><div><p>Answering a question can use up a quantum memory. If the data arrives in random order, the same kind of
+       information keeps coming back, so the algorithm can refill its memory on the way, like refilling a water bottle at
+       every fountain instead of carrying a big tank. I give a problem where this makes the quantum memory tiny, while
+       without random order, or without quantum memory, you need much more. The paper also shows problems where random
+       order does not help.</p></div></details>
+    </li>
+    <li class="paper">
+      <p class="title"><a href="https://arxiv.org/abs/2410.18922">How to Design a Quantum Streaming Algorithm Without Knowing Anything About Quantum Computing</a></p>
+      <p class="authors">John Kallaugher, Ojas Parekh, <span class="me">Nadezhda Voronova</span></p>
+      <p class="venue">SOSA 2025</p>
+      <p class="plinks"><a href="https://arxiv.org/abs/2410.18922">arXiv</a></p>
+      <details class="simple"><summary>In simple words</summary><div><p>A recipe. Take a classical streaming algorithm, replace one part of it with a small quantum building block, and
+       you get a quantum algorithm that uses much less memory. You never have to think about quantum mechanics while doing it.
+       Several earlier quantum advantages follow this way.</p></div></details>
+    </li>
+    <li class="paper">
+      <p class="title"><a href="https://arxiv.org/abs/2311.14123">Exponential Quantum Space Advantage for Approximating Maximum Directed Cut in the Streaming Model</a></p>
+      <p class="authors">John Kallaugher, Ojas Parekh, <span class="me">Nadezhda Voronova</span></p>
+      <p class="venue">STOC 2024. Talk at QIP 2024.</p>
+      <p class="plinks"><a href="https://arxiv.org/abs/2311.14123">arXiv</a> <a href="https://eccc.weizmann.ac.il/report/2023/189">ECCC</a></p>
+      <details class="simple"><summary>In simple words</summary><div><p>A huge network of one-way links arrives one link at a time. You want to estimate how well the nodes can be split
+       into two groups so that many links point from the first group to the second. With a few qubits you can get a good
+       estimate, while any classical algorithm needs exponentially more memory. This was the first problem of this natural
+       kind with such a gap.</p></div></details>
+    </li>
+  </ol>
+</section>
+<section class="topic c" id="communication">
+  <h2>Communication games and polynomials</h2>
+  <p class="question">Where does quantum advantage start, and where does it stop?</p>
+  <p>Most memory lower bounds for streaming come from communication games, where one player sends
+       a single message to another. Quantum query lower bounds come from polynomials, through the degree needed to
+       approximate a function. I use these tools, especially sign degree and approximate degree, to find exactly
+       which problems allow a quantum advantage and how large it can be.</p>
+  <details class="simple"><summary>Explain it simply</summary><div><p>Alice holds a long string of bits. Bob gets to ask one question about it, and Alice may send
+       him only one message, before she knows the question. How long must the message be? If a quantum message can
+       be much shorter than any ordinary one, that usually means quantum memory helps in streaming too.</p>
+       <p>Polynomials enter because the success probability of a quantum algorithm is a low-degree polynomial in its
+       input. So if a problem cannot be described by a low-degree polynomial, no fast quantum algorithm exists.</p></div></details>
+  <ol class="papers">
+    <li class="paper">
+      <p class="title"><a href="https://arxiv.org/abs/2610.06789">Characterizing Quantum Advantage for Generalizations of the Boolean Hidden Matching Problem</a></p>
+      <p class="authors">Mark Bun, Joao F. Doriguello, John Kallaugher, <span class="me">Nadezhda Voronova</span></p>
+      <p class="venue">Preprint, 2026</p>
+      <p class="plinks"><a href="https://arxiv.org/abs/2610.06789">arXiv</a> <a href="https://arxiv.org/pdf/2610.06789">PDF</a></p>
+      <details class="simple"><summary>In simple words</summary><div><p>In a classic communication game, Bob checks whether pairs of Alice’s bits are equal or different, and a
+       quantum message can be exponentially shorter than a classical one. We replace “equal or different” with any rule
+       on small groups of bits. One number attached to the rule, its sign degree, tells you how much a quantum message helps.
+       This settles a conjecture from 2020.</p></div></details>
+    </li>
+    <li class="paper">
+      <p class="title"><a href="https://arxiv.org/abs/2303.03921">Approximate Degree Lower Bounds for Oracle Identification Problems</a></p>
+      <p class="authors">Mark Bun, <span class="me">Nadezhda Voronova</span></p>
+      <p class="venue">TQC 2023</p>
+      <p class="plinks"><a href="https://arxiv.org/abs/2303.03921">arXiv</a> <a href="https://www.youtube.com/watch?v=V4CeHZkiCBY&amp;list=PLmE1-ewBrbkiu3xoESxWYOW4zTxmpP8Sb&amp;index=10">Talk (20 min)</a></p>
+      <details class="simple"><summary>In simple words</summary><div><p>A hidden word is chosen from a known dictionary, and you find it by asking about its letters. We prove how many
+       questions a quantum algorithm needs for several such problems, using polynomials.</p></div></details>
+    </li>
+  </ol>
+</section>
+<section class="topic q4" id="queries">
+  <h2>Quantum query complexity</h2>
+  <p class="question">How many questions does a quantum algorithm need to ask about its input?</p>
+  <p>In the query model an algorithm learns about its input only by asking questions about it, and we
+       count the questions. I am interested in tight bounds for continuous problems, such as convex optimization and
+       linear algebra, where quantum algorithms were known but whether they were optimal was open.</p>
+  <details class="simple"><summary>Explain it simply</summary><div><p>Think of the game of twenty questions. The algorithm cannot look at its input directly. It can only ask
+       an oracle yes-or-no style questions. A quantum algorithm is allowed to ask about many possibilities at once, and
+       the question is how much that saves. Proving that no algorithm can do better than some number of questions is the
+       kind of result I like most.</p></div></details>
+  <ol class="papers">
+    <li class="paper">
+      <p class="title"><a href="https://arxiv.org/abs/2609.09035">Near-Optimal Quantum Lower Bounds for Convex Optimization via Fourier Rank</a></p>
+      <p class="authors">Brandon Augustino, Shouvanik Chakrabarti, Enrico Fontana, Dylan Herman, Junhyung Lyle Kim, Guneykan Ozgul, <span class="me">Nadezhda Voronova</span></p>
+      <p class="venue">Preprint, 2026</p>
+      <p class="plinks"><a href="https://arxiv.org/abs/2609.09035">arXiv</a> <a href="https://arxiv.org/pdf/2609.09035">PDF</a></p>
+      <details class="simple"><summary>In simple words</summary><div><p>You want the best point of a convex region in n dimensions, but you can only ask “is this point inside?”.
+       Quantum algorithms for this need about n questions, and we show that you cannot do much better. On the way we show
+       that computing the determinant of a matrix also needs many questions, using a new version of the polynomial method.</p></div></details>
+    </li>
+  </ol>
+</section>
+<section class="topic l" id="learning">
+  <h2>Learning with little memory</h2>
+  <p class="question">What can you learn if you cannot remember much?</p>
+  <p>Some learning tasks become very hard when the learner has little memory, even if it sees many
+       examples. I am interested in what changes when the memory is quantum, and in using such hardness for security,
+       against adversaries who cannot store much.</p>
+  <details class="simple"><summary>Explain it simply</summary><div><p>If you could only keep a few notes, some patterns would be impossible to learn, no matter how many
+       examples you see. That sounds like bad news, but it can be useful. A secret can be safe from someone who simply
+       cannot remember enough to work it out.</p></div></details>
+  <p class="status">Work in progress, more soon.</p>
+</section>
+<section class="topic" id="earlier">
+  <h2>Earlier work</h2>
+  <ol class="papers">
+    <li class="paper">
+      <p class="title">Existence of Universal Functions for the Class of Linear k-Valued Functions with Moderate k</p>
+      <p class="authors">A. A. Voronenko, <span class="me">N. K. Voronova</span>, V. P. Il’yutko</p>
+      <p class="venue">Computational Mathematics and Modeling 28, 2017</p>
+    </li>
+  </ol>
+</section>
+</div>
+
+<section id="all" class="topic">
+  <h2>All papers</h2>
+  <ol class="papers">
+    <li class="paper">
+      <p class="title"><a href="https://arxiv.org/abs/2610.06727">Random Order in Quantum Streaming: Replenishment and Robust Lower Bounds</a><span class="hand solo">solo!</span></p>
+      <p class="authors"><span class="me">Nadezhda Voronova</span></p>
+      <p class="venue">Preprint, 2026</p>
+      <p class="plinks"><a href="https://arxiv.org/abs/2610.06727">arXiv</a> <a href="https://arxiv.org/pdf/2610.06727">PDF</a></p>
+    </li>
+    <li class="paper">
+      <p class="title"><a href="https://arxiv.org/abs/2610.06789">Characterizing Quantum Advantage for Generalizations of the Boolean Hidden Matching Problem</a></p>
+      <p class="authors">Mark Bun, Joao F. Doriguello, John Kallaugher, <span class="me">Nadezhda Voronova</span></p>
+      <p class="venue">Preprint, 2026</p>
+      <p class="plinks"><a href="https://arxiv.org/abs/2610.06789">arXiv</a> <a href="https://arxiv.org/pdf/2610.06789">PDF</a></p>
+    </li>
+    <li class="paper">
+      <p class="title"><a href="https://arxiv.org/abs/2609.09035">Near-Optimal Quantum Lower Bounds for Convex Optimization via Fourier Rank</a></p>
+      <p class="authors">Brandon Augustino, Shouvanik Chakrabarti, Enrico Fontana, Dylan Herman, Junhyung Lyle Kim, Guneykan Ozgul, <span class="me">Nadezhda Voronova</span></p>
+      <p class="venue">Preprint, 2026</p>
+      <p class="plinks"><a href="https://arxiv.org/abs/2609.09035">arXiv</a> <a href="https://arxiv.org/pdf/2609.09035">PDF</a></p>
+    </li>
+    <li class="paper">
+      <p class="title"><a href="https://arxiv.org/abs/2410.18922">How to Design a Quantum Streaming Algorithm Without Knowing Anything About Quantum Computing</a></p>
+      <p class="authors">John Kallaugher, Ojas Parekh, <span class="me">Nadezhda Voronova</span></p>
+      <p class="venue">SOSA 2025</p>
+      <p class="plinks"><a href="https://arxiv.org/abs/2410.18922">arXiv</a></p>
+    </li>
+    <li class="paper">
+      <p class="title"><a href="https://arxiv.org/abs/2311.14123">Exponential Quantum Space Advantage for Approximating Maximum Directed Cut in the Streaming Model</a></p>
+      <p class="authors">John Kallaugher, Ojas Parekh, <span class="me">Nadezhda Voronova</span></p>
+      <p class="venue">STOC 2024. Talk at QIP 2024.</p>
+      <p class="plinks"><a href="https://arxiv.org/abs/2311.14123">arXiv</a> <a href="https://eccc.weizmann.ac.il/report/2023/189">ECCC</a></p>
+    </li>
+    <li class="paper">
+      <p class="title"><a href="https://arxiv.org/abs/2303.03921">Approximate Degree Lower Bounds for Oracle Identification Problems</a></p>
+      <p class="authors">Mark Bun, <span class="me">Nadezhda Voronova</span></p>
+      <p class="venue">TQC 2023</p>
+      <p class="plinks"><a href="https://arxiv.org/abs/2303.03921">arXiv</a> <a href="https://www.youtube.com/watch?v=V4CeHZkiCBY&amp;list=PLmE1-ewBrbkiu3xoESxWYOW4zTxmpP8Sb&amp;index=10">Talk (20 min)</a></p>
+    </li>
+    <li class="paper">
+      <p class="title">Existence of Universal Functions for the Class of Linear k-Valued Functions with Moderate k</p>
+      <p class="authors">A. A. Voronenko, <span class="me">N. K. Voronova</span>, V. P. Il’yutko</p>
+      <p class="venue">Computational Mathematics and Modeling 28, 2017</p>
+    </li>
+  </ol>
+</section>
+</main>
+
+<footer class="wrap foot">
+  <p>Last updated November 2026.</p>
+</footer>
+<script>
+(function () {
+  var topics = document.getElementById('view-topics');
+  var all = document.getElementById('all');
+  var buttons = document.querySelectorAll('.switch button');
+  var simpleBtn = document.querySelector('.simple-all');
+  function show(view) {
+    topics.hidden = view !== 'topics';
+    all.hidden = view !== 'all';
+    simpleBtn.hidden = view !== 'topics';
+    buttons.forEach(function (b) { b.setAttribute('aria-pressed', String(b.dataset.view === view)); });
+  }
+  buttons.forEach(function (b) {
+    b.addEventListener('click', function () {
+      show(b.dataset.view);
+      history.replaceState(null, '', b.dataset.view === 'all' ? '#all' : location.pathname);
+    });
+  });
+  simpleBtn.addEventListener('click', function () {
+    var open = simpleBtn.getAttribute('aria-pressed') !== 'true';
+    document.querySelectorAll('details.simple').forEach(function (d) { d.open = open; });
+    simpleBtn.setAttribute('aria-pressed', String(open));
+    simpleBtn.textContent = open ? 'close all simple explanations' : 'open all simple explanations';
+  });
+  show(location.hash === '#all' ? 'all' : 'topics');
+})();
+</script>
+</body>
+</html>
