@@ -42,7 +42,7 @@ Papers live in `research.html`, in the "Papers" list (newest first). To add one,
 
 - `id="..."` is a short name for the paper. The overview at the top of the page and the home page link to it as `#that-name`.
 - `data-tags="..."` lists its topics, separated by spaces: `streaming`, `communication`, `queries`, `polynomials`. These drive the filter buttons. Also update the visible `<span class="tag ...">` labels to match.
-- The `<details class="simple">` box holds the "In simple words" explanation.
+- Under each paper, `<div class="more">` holds two fold-outs: `<details class="abstract">` with the abstract, and `<details class="simple">` with the "In simple words" explanation. Opening one closes the other. Maths in abstracts is written as `$...$` and rendered by KaTeX on the page. If a paper has no abstract yet, there is an "Abstract on arXiv" link in its place.
 
 When a preprint is accepted, replace "Preprint, 2026" with the venue, and add a line to "What's new" on the home page.
 

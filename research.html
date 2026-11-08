@@ -117,11 +117,16 @@
       <p class="venue">Preprint, 2026</p>
       <p class="tags"><span class="tag streaming">Streaming</span><span class="tag communication">Communication</span></p>
       <p class="plinks"><a href="https://arxiv.org/abs/2610.06727">arXiv</a> <a href="https://arxiv.org/pdf/2610.06727">PDF</a></p>
-      <details class="simple"><summary>In simple words</summary><div><p>Answering a question can use up a quantum memory. If the data arrives in random order, the same kind of
+      <div class="more"><details class="abstract"><summary>Abstract</summary><div><p>How can random order change the role of quantum memory in streaming? Later classical input can restore the usefulness of a quantum state consumed by earlier queries. We call this replenishment.</p>
+<p>We construct an artificial problem based on Hidden Matching, with repeated coordinate data and online matching requests. It admits a one-pass quantum algorithm using polylogarithmic space in uniformly random order, but unconditionally requires polynomial space both classically in random order and quantumly when all updates precede the requests.</p>
+<p>To prove the quantum lower bound, we strengthen the consumability bounds of Gilboa, Jain, and McClean for Multiple Hidden Matching. Without prior entanglement, any quantum encoding supporting $r$ independent matching requests requires $\Omega(r)$ qubits for $r\le N^{1/2-\delta}$ and every fixed $\delta\in(0,1/2)$, even with simultaneous revelation and arbitrary joint decoding. For sequential requests, the linear bound extends through $r=\Theta(\sqrt N)$.</p>
+<p>We also adapt Kallaugher's triangle-counting algorithm to uniformly random streams in which every edge is repeated equally often. Rebuilding the quantum sketch and resampling the classical estimator improve its expected-space bound in suitable parameter regimes.</p>
+<p>Finally, we extend the robust Noisy Gap Cycle framework of Assadi and Sundaresan to quantum streaming. A quantum communication lower bound for Block Hidden XOR yields an $\Omega(n)$ space lower bound in random edge order for large enough cycles, with consequences for several graph problems.</p>
+<p>Thus random order can enable replenishment of small quantum representations, while substantial space requirements persist for other tasks.</p></div></details><details class="simple"><summary>In simple words</summary><div><p>Answering a question can use up a quantum memory. If the data arrives in random order, the same kind of
        information keeps coming back, so the algorithm can refill its memory on the way, like refilling a water bottle at
        every fountain instead of carrying a big tank. I give a problem where this makes the quantum memory tiny, while
        without random order, or without quantum memory, you need much more. The paper also shows problems where random
-       order does not help.</p></div></details>
+       order does not help.</p></div></details></div>
     </li>
     <li class="paper" id="bhm" data-tags="communication polynomials">
       <p class="title"><a href="https://arxiv.org/abs/2610.06789">Characterizing Quantum Advantage for Generalizations of the Boolean Hidden Matching Problem</a></p>
@@ -129,10 +134,11 @@
       <p class="venue">Preprint, 2026</p>
       <p class="tags"><span class="tag communication">Communication</span><span class="tag polynomials">Polynomials</span></p>
       <p class="plinks"><a href="https://arxiv.org/abs/2610.06789">arXiv</a> <a href="https://arxiv.org/pdf/2610.06789">PDF</a></p>
-      <details class="simple"><summary>In simple words</summary><div><p>In a classic communication game, Bob checks whether pairs of Alice’s bits are equal or different, and a
+      <div class="more"><details class="abstract"><summary>Abstract</summary><div><p>We study the one-way communication complexity of the $f$-Boolean Hidden Partition problem. Here, Alice is given an $n$-bit string and Bob is given $\Omega(n)$ disjoint blocks of its indices together with a string of labels. Under the promise that the evaluations of $f$ on these blocks either agree with all of the labels or disagree with all of them, Bob must determine which is the case using a single message from Alice. This problem generalizes the Boolean Hidden Matching and Hidden Hypermatching problems, which capture the special case where $f$ is the parity function.</p>
+<p>We establish classical and quantum communication bounds for $f$-Boolean Hidden Partition in terms of the sign degree $d$ of $f$, proving a conjecture of Doriguello and Montanaro (TQC 2020). Their prior work gave logarithmic communication upper bounds for classical protocols when $d \le 1$ and quantum protocols when $d \le 2$, as well as polynomial lower bounds for certain structured functions with larger sign degree. We show that for every $f$ of sign degree $d \ge 2$, the randomized classical communication complexity of this problem is $\Theta(n^{1-1/d})$ while its quantum communication complexity lies between $\Omega(n^{1-2/d})$ and $O(n^{1-1/\lceil d/2 \rceil} \log n)$. This completely characterizes the functions $f$ admitting polynomial quantum advantage as those for which $d \ge 2$, with a new infinite family of exponential separations given by the case $d = 2$.</p></div></details><details class="simple"><summary>In simple words</summary><div><p>In a classic communication game, Bob checks whether pairs of Alice’s bits are equal or different, and a
        quantum message can be exponentially shorter than a classical one. We replace “equal or different” with any rule
        on small groups of bits. One number attached to the rule, its sign degree, tells you how much a quantum message helps.
-       This settles a conjecture from 2020.</p></div></details>
+       This settles a conjecture from 2020.</p></div></details></div>
     </li>
     <li class="paper" id="convex" data-tags="queries polynomials">
       <p class="title"><a href="https://arxiv.org/abs/2609.09035">Near-Optimal Quantum Lower Bounds for Convex Optimization via Fourier Rank</a></p>
@@ -140,9 +146,9 @@
       <p class="venue">Preprint, 2026</p>
       <p class="tags"><span class="tag queries">Queries</span><span class="tag polynomials">Polynomials</span></p>
       <p class="plinks"><a href="https://arxiv.org/abs/2609.09035">arXiv</a> <a href="https://arxiv.org/pdf/2609.09035">PDF</a></p>
-      <details class="simple"><summary>In simple words</summary><div><p>You want the best point of a convex region in n dimensions, but you can only ask “is this point inside?”.
+      <div class="more"><details class="abstract"><summary>Abstract</summary><div><p>We establish a linear quantum query lower bound for high-accuracy convex optimization over an explicit family of $n$-dimensional ellipsoids. We focus on linear optimization with an explicitly given objective, where the feasible set is accessed through a membership oracle. We show that any algorithm that, for every unit linear objective, returns an exactly feasible point with additive objective error $\Theta(n^{-1/2})$ requires $\Omega(n)$ membership queries, where the ellipsoids are contained in the unit ball. The same lower bound can be shown to hold if the returned point is only required to be approximately feasible, within $\Theta(n^{-3/2})$ distance from the feasible set. This resolves an open question posed by Chakrabarti, Childs, Li, and Wu (<em>Quantum</em>, 2020) and by van Apeldoorn, Gilyén, Gribling, and de Wolf (<em>Quantum</em>, 2020). Coupled with the upper bounds in these papers, the query complexity of high-accuracy convex optimization is characterized tightly up to logarithmic factors. The proof is built around a lower bound for determinant computation that is derived via a novel polynomial method based on Fourier-rank. In the continuous matrix phase-query model, computing the determinant of a real $n\times n$ matrix requires at least $n/2$ matrix-vector product queries. The construction also yields an $\Omega(n)$ phase-query lower bound for estimating the minimum eigenvalue of a real symmetric $n\times n$ matrix to additive accuracy $\Theta(n^{-2})$. These results extend the determinant and minimum-eigenvalue lower bounds of Childs, Hung, and Li (ICALP 2021) from finite fields to the real-valued setting. Based on the same constructions, we also prove an $\Omega(\min\{\sqrt\kappa,n\})$ gradient-query lower bound for constant-accuracy optimization of $1$-strongly convex and $\kappa$-smooth functions, which is optimal up to a logarithmic factor.</p></div></details><details class="simple"><summary>In simple words</summary><div><p>You want the best point of a convex region in n dimensions, but you can only ask “is this point inside?”.
        Quantum algorithms for this need about n questions, and we show that you cannot do much better. On the way we show
-       that computing the determinant of a matrix also needs many questions, using a new version of the polynomial method.</p></div></details>
+       that computing the determinant of a matrix also needs many questions, using a new version of the polynomial method.</p></div></details></div>
     </li>
     <li class="paper" id="sosa" data-tags="streaming">
       <p class="title"><a href="https://arxiv.org/abs/2410.18922">How to Design a Quantum Streaming Algorithm Without Knowing Anything About Quantum Computing</a></p>
@@ -150,9 +156,9 @@
       <p class="venue">SOSA 2025</p>
       <p class="tags"><span class="tag streaming">Streaming</span></p>
       <p class="plinks"><a href="https://arxiv.org/abs/2410.18922">arXiv</a></p>
-      <details class="simple"><summary>In simple words</summary><div><p>A recipe. Take a classical streaming algorithm, replace one part of it with a small quantum building block, and
+      <div class="more"><a class="abstract-link" href="https://arxiv.org/abs/2410.18922">Abstract on arXiv</a><details class="simple"><summary>In simple words</summary><div><p>A recipe. Take a classical streaming algorithm, replace one part of it with a small quantum building block, and
        you get a quantum algorithm that uses much less memory. You never have to think about quantum mechanics while doing it.
-       Several earlier quantum advantages follow this way.</p></div></details>
+       Several earlier quantum advantages follow this way.</p></div></details></div>
     </li>
     <li class="paper" id="maxdicut" data-tags="streaming">
       <p class="title"><a href="https://arxiv.org/abs/2311.14123">Exponential Quantum Space Advantage for Approximating Maximum Directed Cut in the Streaming Model</a></p>
@@ -160,10 +166,10 @@
       <p class="venue">STOC 2024. Talk at QIP 2024.</p>
       <p class="tags"><span class="tag streaming">Streaming</span></p>
       <p class="plinks"><a href="https://arxiv.org/abs/2311.14123">arXiv</a> <a href="https://eccc.weizmann.ac.il/report/2023/189">ECCC</a></p>
-      <details class="simple"><summary>In simple words</summary><div><p>A huge network of one-way links arrives one link at a time. You want to estimate how well the nodes can be split
+      <div class="more"><a class="abstract-link" href="https://arxiv.org/abs/2311.14123">Abstract on arXiv</a><details class="simple"><summary>In simple words</summary><div><p>A huge network of one-way links arrives one link at a time. You want to estimate how well the nodes can be split
        into two groups so that many links point from the first group to the second. With a few qubits you can get a good
        estimate, while any classical algorithm needs exponentially more memory. This was the first problem of this natural
-       kind with such a gap.</p></div></details>
+       kind with such a gap.</p></div></details></div>
     </li>
     <li class="paper" id="oracle-id" data-tags="queries polynomials">
       <p class="title"><a href="https://arxiv.org/abs/2303.03921">Approximate Degree Lower Bounds for Oracle Identification Problems</a></p>
@@ -171,8 +177,8 @@
       <p class="venue">TQC 2023</p>
       <p class="tags"><span class="tag queries">Queries</span><span class="tag polynomials">Polynomials</span></p>
       <p class="plinks"><a href="https://arxiv.org/abs/2303.03921">arXiv</a> <a href="https://www.youtube.com/watch?v=V4CeHZkiCBY&amp;list=PLmE1-ewBrbkiu3xoESxWYOW4zTxmpP8Sb&amp;index=10">Talk (20 min)</a></p>
-      <details class="simple"><summary>In simple words</summary><div><p>A hidden word is chosen from a known dictionary, and you find it by asking about its letters. We prove how many
-       questions a quantum algorithm needs for several such problems, using polynomials.</p></div></details>
+      <div class="more"><a class="abstract-link" href="https://arxiv.org/abs/2303.03921">Abstract on arXiv</a><details class="simple"><summary>In simple words</summary><div><p>A hidden word is chosen from a known dictionary, and you find it by asking about its letters. We prove how many
+       questions a quantum algorithm needs for several such problems, using polynomials.</p></div></details></div>
     </li>
     <li class="paper" id="k-valued" data-tags="">
       <p class="title">Existence of Universal Functions for the Class of Linear k-Valued Functions with Moderate k</p>
@@ -186,6 +192,10 @@
 <footer class="wrap foot">
   <p>Last updated November 2026.</p>
 </footer>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/contrib/auto-render.min.js"
+  onload="renderMathInElement(document.getElementById('papers'), {delimiters: [{left: '$', right: '$', display: false}]})"></script>
 <script>
 (function () {
   var chips = document.querySelectorAll('.filters button');
@@ -197,6 +207,12 @@
       items.forEach(function (li) {
         li.hidden = f !== 'all' && li.dataset.tags.split(' ').indexOf(f) < 0;
       });
+    });
+  });
+  document.querySelectorAll('.more details').forEach(function (d) {
+    d.addEventListener('toggle', function () {
+      if (!d.open) return;
+      d.parentNode.querySelectorAll('details').forEach(function (o) { if (o !== d) o.open = false; });
     });
   });
   var simpleBtn = document.querySelector('.simple-all');
