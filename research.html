@@ -94,18 +94,25 @@
     </li>
   </ol>
 </section>
-<section class="topic c" id="communication">
-  <h2>Communication games and polynomials</h2>
-  <p class="question">Where does quantum advantage start, and where does it stop?</p>
-  <p>Most memory lower bounds for streaming come from communication games, where one player sends
-       a single message to another. Quantum query lower bounds come from polynomials, through the degree needed to
-       approximate a function. I use these tools, especially sign degree and approximate degree, to find exactly
-       which problems allow a quantum advantage and how large it can be.</p>
-  <details class="simple"><summary>Explain it simply</summary><div><p>Alice holds a long string of bits. Bob gets to ask one question about it, and Alice may send
-       him only one message, before she knows the question. How long must the message be? If a quantum message can
-       be much shorter than any ordinary one, that usually means quantum memory helps in streaming too.</p>
-       <p>Polynomials enter because the success probability of a quantum algorithm is a low-degree polynomial in its
-       input. So if a problem cannot be described by a low-degree polynomial, no fast quantum algorithm exists.</p></div></details>
+<section class="topic c" id="access">
+  <h2>Limited access: queries and communication</h2>
+  <p class="question">How much does an algorithm need to see, or to be told, to solve a problem?</p>
+  <p>In the query model an algorithm learns about its input only by asking questions about it, and we
+       count the questions. In one-way communication, one player sends a single message to another, and we measure its
+       length. Both ask how much information about the input is really needed, and both have quantum versions where the
+       answer can be very different.</p>
+       <p>My main tools are polynomials: approximate degree for queries and sign degree for communication. I use them to
+       find exactly which problems allow a quantum advantage and how large it can be, from discrete problems such as
+       identifying a hidden string to continuous ones such as convex optimization. These games are also where memory
+       lower bounds for streaming come from.</p>
+  <details class="simple"><summary>Explain it simply</summary><div><p>Think of the game of twenty questions. The algorithm cannot look at its input directly, it can only ask
+       questions about it. A quantum algorithm may ask about many possibilities at once, and the question is how much that
+       saves.</p>
+       <p>Communication is a cousin of the same game. Alice holds a long string and may send Bob a single message. Bob then
+       has to answer a question about her string. How long must the message be, and can a quantum message be much shorter?</p>
+       <p>Polynomials enter because the answer of a quantum algorithm is described by a low-degree polynomial in its input.
+       If a problem cannot be described by a low-degree polynomial, there is no fast quantum algorithm for it. Proving such
+       limits is the kind of result I like most.</p></div></details>
   <ol class="papers">
     <li class="paper">
       <p class="title"><a href="https://arxiv.org/abs/2610.06789">Characterizing Quantum Advantage for Generalizations of the Boolean Hidden Matching Problem</a></p>
@@ -118,27 +125,6 @@
        This settles a conjecture from 2020.</p></div></details>
     </li>
     <li class="paper">
-      <p class="title"><a href="https://arxiv.org/abs/2303.03921">Approximate Degree Lower Bounds for Oracle Identification Problems</a></p>
-      <p class="authors">Mark Bun, <span class="me">Nadezhda Voronova</span></p>
-      <p class="venue">TQC 2023</p>
-      <p class="plinks"><a href="https://arxiv.org/abs/2303.03921">arXiv</a> <a href="https://www.youtube.com/watch?v=V4CeHZkiCBY&amp;list=PLmE1-ewBrbkiu3xoESxWYOW4zTxmpP8Sb&amp;index=10">Talk (20 min)</a></p>
-      <details class="simple"><summary>In simple words</summary><div><p>A hidden word is chosen from a known dictionary, and you find it by asking about its letters. We prove how many
-       questions a quantum algorithm needs for several such problems, using polynomials.</p></div></details>
-    </li>
-  </ol>
-</section>
-<section class="topic q4" id="queries">
-  <h2>Quantum query complexity</h2>
-  <p class="question">How many questions does a quantum algorithm need to ask about its input?</p>
-  <p>In the query model an algorithm learns about its input only by asking questions about it, and we
-       count the questions. I am interested in tight bounds for continuous problems, such as convex optimization and
-       linear algebra, where quantum algorithms were known but whether they were optimal was open.</p>
-  <details class="simple"><summary>Explain it simply</summary><div><p>Think of the game of twenty questions. The algorithm cannot look at its input directly. It can only ask
-       an oracle yes-or-no style questions. A quantum algorithm is allowed to ask about many possibilities at once, and
-       the question is how much that saves. Proving that no algorithm can do better than some number of questions is the
-       kind of result I like most.</p></div></details>
-  <ol class="papers">
-    <li class="paper">
       <p class="title"><a href="https://arxiv.org/abs/2609.09035">Near-Optimal Quantum Lower Bounds for Convex Optimization via Fourier Rank</a></p>
       <p class="authors">Brandon Augustino, Shouvanik Chakrabarti, Enrico Fontana, Dylan Herman, Junhyung Lyle Kim, Guneykan Ozgul, <span class="me">Nadezhda Voronova</span></p>
       <p class="venue">Preprint, 2026</p>
@@ -147,18 +133,15 @@
        Quantum algorithms for this need about n questions, and we show that you cannot do much better. On the way we show
        that computing the determinant of a matrix also needs many questions, using a new version of the polynomial method.</p></div></details>
     </li>
+    <li class="paper">
+      <p class="title"><a href="https://arxiv.org/abs/2303.03921">Approximate Degree Lower Bounds for Oracle Identification Problems</a></p>
+      <p class="authors">Mark Bun, <span class="me">Nadezhda Voronova</span></p>
+      <p class="venue">TQC 2023</p>
+      <p class="plinks"><a href="https://arxiv.org/abs/2303.03921">arXiv</a> <a href="https://www.youtube.com/watch?v=V4CeHZkiCBY&amp;list=PLmE1-ewBrbkiu3xoESxWYOW4zTxmpP8Sb&amp;index=10">Talk (20 min)</a></p>
+      <details class="simple"><summary>In simple words</summary><div><p>A hidden word is chosen from a known dictionary, and you find it by asking about its letters. We prove how many
+       questions a quantum algorithm needs for several such problems, using polynomials.</p></div></details>
+    </li>
   </ol>
-</section>
-<section class="topic l" id="learning">
-  <h2>Learning with little memory</h2>
-  <p class="question">What can you learn if you cannot remember much?</p>
-  <p>Some learning tasks become very hard when the learner has little memory, even if it sees many
-       examples. I am interested in what changes when the memory is quantum, and in using such hardness for security,
-       against adversaries who cannot store much.</p>
-  <details class="simple"><summary>Explain it simply</summary><div><p>If you could only keep a few notes, some patterns would be impossible to learn, no matter how many
-       examples you see. That sounds like bad news, but it can be useful. A secret can be safe from someone who simply
-       cannot remember enough to work it out.</p></div></details>
-  <p class="status">Work in progress, more soon.</p>
 </section>
 <section class="topic" id="earlier">
   <h2>Earlier work</h2>

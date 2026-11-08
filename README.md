@@ -42,7 +42,7 @@ Papers live in `research.html` and appear twice: once under their topic (with an
 
 ## The research map
 
-The four boxes on the home page are in `index.html` under "Questions I care about". Each links to a section of `research.html` by its id (`#streaming`, `#communication`, `#queries`, `#learning`). To add a topic, add a box there and a matching `<section class="topic" id="...">` in `research.html`. On phones the boxes stack and the connecting labels are hidden.
+The boxes on the home page are in `index.html` under "Questions I care about". Each links to a section of `research.html` by its id (`#streaming`, `#access`). To add a topic, add a box there and a matching `<section class="topic" id="...">` in `research.html`. On phones the boxes stack and the connecting label is hidden.
 
 ## Simple explanations
 
