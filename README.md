@@ -8,7 +8,7 @@ The navigation bar is copied at the top of each page. If you add or rename a pag
 
 1. Put your email address in `index.html` (search for `YOUR_EMAIL`).
 2. Add your Google Scholar URL, or delete that line (search for `scholar.google.com`).
-3. Add `cv.pdf` (your current CV) and `photo.jpg` (square, at least 200×200 px) to this folder. If `photo.jpg` is missing, the page simply shows no photo.
+3. Add `photo.jpg` (square, at least 200×200 px) to this folder. If `photo.jpg` is missing, the page simply shows no photo.
 4. Re-host anything that only lives on Owlstown: QIP 2024 slides, the qualifying-exam slides, the CRA-WP poster. Put them in a `files/` folder and link them from `talks.html` (there is a TODO next to QIP 2024).
 5. If you want the job search visible, uncomment the job-market line in `index.html`.
 6. Fill in the dates of the invited seminars in `talks.html`.
@@ -55,3 +55,12 @@ The page opens with two cards, "Topics" and "List of papers". Each shows one vie
 ## Simple explanations
 
 Every overview section and every paper has a `<details class="simple">` block. Readers open them one by one, or all at once with the "open all simple explanations" button at the top of the research page.
+
+## CV
+
+The CV source is `cv/cv.tex` and the built file is `cv/cv.pdf`, which the site links to. Build it with `pdflatex cv.tex` run twice inside `cv/` (the second run fills in the page count), or upload `cv.tex` to Overleaf. It only needs standard packages and the Charter font that comes with every LaTeX installation.
+
+Two switches at the top of `cv.tex`:
+
+- `\drafttrue` shows missing details as red [TODO] marks. Switch to `\draftfalse` once they are filled in.
+- `\referencestrue` prints a References section at the end. It is off by default.
