@@ -217,6 +217,10 @@ details.abstract > div p:last-child { margin-bottom: 0; }
   padding: 0.5rem 0.8rem; border-radius: 10px; background: var(--tint); border: 1px solid var(--rule);
 }
 
+/* Talks */
+.talks li { margin-bottom: 0.7rem; }
+.talk-title { font-style: italic; color: var(--muted); }
+
 /* Plain lists */
 .plain { padding-left: 1.1rem; margin: 0 0 1rem; }
 .plain li { margin-bottom: 0.45rem; }

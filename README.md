@@ -58,9 +58,4 @@ Every overview section and every paper has a `<details class="simple">` block. R
 
 ## CV
 
-The CV source is `cv/cv.tex` and the built file is `cv/cv.pdf`, which the site links to. Build it with `pdflatex cv.tex` run twice inside `cv/` (the second run fills in the page count), or upload `cv.tex` to Overleaf. It only needs standard packages and the Charter font that comes with every LaTeX installation.
-
-Two switches at the top of `cv.tex`:
-
-- `\drafttrue` shows missing details as red [TODO] marks. Switch to `\draftfalse` once they are filled in.
-- `\referencestrue` prints a References section at the end. It is off by default.
+`cv/cv.pdf` is the CV the site links to. The CV itself is written and kept in the job-search materials, not here. When it changes, replace `cv/cv.pdf` with the new PDF (same file name) so the link keeps working.
