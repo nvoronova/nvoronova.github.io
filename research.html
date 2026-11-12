@@ -48,59 +48,71 @@
   <p class="note"><button type="button" class="simple-all" aria-pressed="false">open all simple explanations</button></p>
 
   <div class="chapter s">
-    <h3>Quantum memory in streaming</h3>
+    <h3>Quantum streaming: computing with small quantum memory</h3>
     <p>
-      In the streaming model the data goes past once and is too large to store. I ask when a small quantum memory
-      can do the work of a large classical one. With John Kallaugher and Ojas Parekh we found the first natural
-      streaming problem with an exponential quantum advantage, <a href="#maxdicut">approximating Max Directed Cut</a>.
-      We then turned the main idea into <a href="#sosa">a simple quantum building block</a> that can be plugged into
-      otherwise classical algorithms. Most recently I looked at how the order of the input matters. When the data
-      arrives in random order, a quantum memory that has been used up can be <a href="#random-order">refilled from later data</a>.
+      A streaming algorithm processes a long sequence of updates in one pass using memory much smaller than the input.
+      A quantum streaming algorithm processes the same classical stream but maintains a small number of qubits.
+      The central question is when a few qubits can replace a much larger classical memory. Such advantages are
+      unconditional, since they are proved through communication complexity, and they require a quantum device only
+      as large as the memory. With Kallaugher and Parekh I gave the first exponential quantum space advantage for a
+      natural streaming problem, <a href="#maxdicut">approximating Maximum Directed Cut</a>, and
+      <a href="#sosa">isolated the quantum sketch</a> behind this and earlier advantages. In
+      <a href="#random-order">recent single-author work</a> I study how quantum memory interacts with the order of the
+      stream. I show that all four combinations of classical or quantum memory with adversarial or random order are
+      exponentially separated, and I identify two properties of quantum memory that govern this: consumability, the
+      fact that a measurement destroys the state it reads, and replenishment, the ability to rebuild that state from
+      data that keeps arriving.
     </p>
-    <details class="simple"><summary>Explain it simply</summary><div><p>Someone reads you a very long list, once, and you only have a tiny notebook.
-       You cannot write everything down, but later you will be asked a question about the whole list.
-       Which questions can you still answer?</p>
-       <p>A quantum notebook works differently from a paper one. A few qubits can hold a summary that mixes
-       many items together. You can only read a little of it back, but for some questions that little is
-       exactly what you need. Then a handful of qubits does the job of an enormous paper notebook.</p></div></details>
+    <details class="simple"><summary>In simple words</summary><div>
+      <p>Quantum computers will have very little memory for a long time. So a natural question is what a small
+      quantum memory is good for. Streaming is the cleanest way to ask it. A huge amount of ordinary data flows past
+      once, and the computer can keep only a small summary. I study when a summary made of qubits can be exponentially
+      smaller than any summary made of bits, and when it cannot. The answers depend on surprising details, such as the
+      order in which the data arrives and the fact that looking at a quantum summary destroys it.</p>
+    </div></details>
   </div>
 
   <div class="chapter c">
-    <h3>Communication: where the limits come from</h3>
+    <h3>Quantum communication: what one quantum message can do</h3>
     <p>
-      To show that quantum memory does not help, or helps only a little, one usually goes through a communication
-      game. Alice sends Bob a single message, and we ask how long it must be. The best-known example is Boolean Hidden
-      Matching, where quantum messages are exponentially shorter than classical ones. With Mark Bun, Joao Doriguello and
-      John Kallaugher we found <a href="#bhm">exactly which generalizations of this game keep a quantum advantage</a>, in terms
-      of the sign degree of the function involved. My <a href="#random-order">solo paper</a> also proves new quantum
-      communication lower bounds, for Multiple Hidden Matching and Block Hidden XOR, and uses them for streaming in
-      random order.
+      In one-way communication complexity, Alice holds part of an input and sends a single message to Bob, who must
+      compute a function of both parts. This model is the basic case of computation on distributed data, and it is the
+      main source of lower bounds for streaming. Exponential separations between quantum and classical messages are
+      known, but almost all of them rest on one problem, Boolean Hidden Matching. With Bun, Doriguello and Kallaugher I
+      characterized a broad generalization, the <a href="#bhm">$f$-Boolean Hidden Partition problems</a>. The classical
+      one-way complexity is $\Theta(n^{1-1/d})$ and the quantum complexity lies between $\Omega(n^{1-2/d})$ and
+      $\tilde{O}(n^{1-1/\lceil d/2 \rceil})$, where $d$ is the sign degree of $f$. This proves a conjecture of
+      Doriguello and Montanaro and shows exactly which problems of this family admit a quantum advantage.
     </p>
-    <details class="simple"><summary>Explain it simply</summary><div>
-      <p>Alice holds a long string of bits and may send Bob one message. Then Bob has to answer a question about her
-      string. How long must the message be? If even a quantum message has to be long, then a streaming algorithm also
-      needs a lot of quantum memory, because its memory is exactly the message the first half of the stream sends to the
-      second half.</p>
+    <details class="simple"><summary>In simple words</summary><div>
+      <p>Sometimes data is split between two machines, and sending information between them is the expensive part.
+      A quantum message can sometimes carry what is needed in exponentially fewer qubits than the bits a classical
+      message would need. But this happens only for special problems, and for a long time we had essentially one
+      example. I work on understanding which problems allow such savings and which do not. The same understanding tells
+      us where to look for quantum advantages in streaming and, in the future, in networks of small quantum computers.</p>
     </div></details>
   </div>
 
   <div class="chapter q">
-    <h3>Counting questions: queries and polynomials</h3>
+    <h3>Quantum query complexity: proving that speedups stop somewhere</h3>
     <p>
-      In the query model an algorithm sees its input only by asking questions about it, and we count the questions.
-      The polynomial method turns this into a question about polynomials. With Mark Bun I used approximate degree to
-      prove <a href="#oracle-id">tight lower bounds for oracle identification problems</a>. In a larger collaboration we
-      showed that <a href="#convex">high-accuracy convex optimization needs about n quantum queries</a> in n dimensions, so
-      the known quantum algorithms are optimal up to logarithmic factors. The key step there is a new form of the
-      polynomial method, for computing the determinant of a real matrix.
+      In the query model, an algorithm accesses its input only through queries to an oracle, and the cost is the number
+      of queries. Most known quantum speedups are query speedups, and query lower bounds are the main way to prove that a
+      quantum algorithm is optimal. I work on lower-bound techniques, in particular on the polynomial method. With
+      coauthors at JPMorgan Chase I introduced <a href="#convex">Fourier rank</a>, an extension of the polynomial method to
+      real-valued inputs, and used it to prove an $\Omega(n)$ lower bound for convex optimization with membership
+      queries, which matches the known quantum algorithms, together with tight bounds for determinant and eigenvalue
+      problems with matrix-vector queries. With Bun I proved <a href="#oracle-id">an $\Omega(n / \log^2 n)$ lower bound</a>
+      on the approximate degree of ordered search and of hidden string identification, where the polynomial method was
+      previously known to give only $\Omega(\sqrt{n})$.
     </p>
-    <details class="simple"><summary>Explain it simply</summary><div>
-      <p>Think of the game of twenty questions. The algorithm cannot look at its input directly, it can only ask
-      questions about it. A quantum algorithm may ask about many possibilities at once, and the question is how much
-      that saves.</p>
-      <p>Polynomials enter because the answer of a quantum algorithm that asks few questions is described by a
-      low-degree polynomial in its input. If a problem cannot be described by a low-degree polynomial, there is no
-      quantum algorithm for it that asks few questions.</p>
+    <details class="simple"><summary>In simple words</summary><div>
+      <p>A lot of excitement about quantum computers comes from problems where they need to look at far less of the
+      input than classical computers do. It is just as important to know where this stops. If we can prove that no
+      quantum algorithm can do better than the one we have, people can stop searching and can make honest estimates of
+      what quantum computers will deliver. I develop the mathematical tools for such proofs, and I have used them to show
+      that the known quantum algorithms for convex optimization and for searching a sorted list are essentially the best
+      possible.</p>
     </div></details>
   </div>
 </section>
@@ -123,11 +135,7 @@
 <p>To prove the quantum lower bound, we strengthen the consumability bounds of Gilboa, Jain, and McClean for Multiple Hidden Matching. Without prior entanglement, any quantum encoding supporting $r$ independent matching requests requires $\Omega(r)$ qubits for $r\le N^{1/2-\delta}$ and every fixed $\delta\in(0,1/2)$, even with simultaneous revelation and arbitrary joint decoding. For sequential requests, the linear bound extends through $r=\Theta(\sqrt N)$.</p>
 <p>We also adapt Kallaugher's triangle-counting algorithm to uniformly random streams in which every edge is repeated equally often. Rebuilding the quantum sketch and resampling the classical estimator improve its expected-space bound in suitable parameter regimes.</p>
 <p>Finally, we extend the robust Noisy Gap Cycle framework of Assadi and Sundaresan to quantum streaming. A quantum communication lower bound for Block Hidden XOR yields an $\Omega(n)$ space lower bound in random edge order for large enough cycles, with consequences for several graph problems.</p>
-<p>Thus random order can enable replenishment of small quantum representations, while substantial space requirements persist for other tasks.</p></div></details><details class="simple"><summary>In simple words</summary><div><p>Answering a question can use up a quantum memory. If the data arrives in random order, the same kind of
-       information keeps coming back, so the algorithm can refill its memory on the way, like refilling a water bottle at
-       every fountain instead of carrying a big tank. I give a problem where this makes the quantum memory tiny, while
-       without random order, or without quantum memory, you need much more. The paper also shows problems where random
-       order does not help.</p></div></details></div>
+<p>Thus random order can enable replenishment of small quantum representations, while substantial space requirements persist for other tasks.</p></div></details><details class="simple"><summary>In simple words</summary><div><p>A streaming algorithm reads a huge input once, piece by piece, and can remember only a little. Two things are known to make such algorithms much stronger. One is quantum memory. The other is luck with the order: the pieces arrive in random order, not in the worst possible one. This paper asks how the two interact. The answer is that anything can happen. There are problems where each one helps and the other does not, problems where neither helps, and a problem where only the two together help. The last case comes from a property of quantum memory that has no classical counterpart. Reading a quantum state destroys it, so a quantum memory can answer only a few questions before it is used up. If the data keeps arriving in random order, the algorithm can rebuild the state from the new data and keep answering. I call this replenishment.</p></div></details></div>
     </li>
     <li class="paper" id="bhm" data-tags="communication polynomials">
       <p class="title"><a href="https://arxiv.org/abs/2610.06789">Characterizing Quantum Advantage for Generalizations of the Boolean Hidden Matching Problem</a></p>
@@ -136,10 +144,7 @@
       <p class="tags"><span class="tag communication">Communication</span><span class="tag polynomials">Polynomials</span></p>
       <p class="plinks"><a href="https://arxiv.org/abs/2610.06789">arXiv</a> <a href="https://arxiv.org/pdf/2610.06789">PDF</a></p>
       <div class="more"><details class="abstract"><summary>Abstract</summary><div><p>We study the one-way communication complexity of the $f$-Boolean Hidden Partition problem. Here, Alice is given an $n$-bit string and Bob is given $\Omega(n)$ disjoint blocks of its indices together with a string of labels. Under the promise that the evaluations of $f$ on these blocks either agree with all of the labels or disagree with all of them, Bob must determine which is the case using a single message from Alice. This problem generalizes the Boolean Hidden Matching and Hidden Hypermatching problems, which capture the special case where $f$ is the parity function.</p>
-<p>We establish classical and quantum communication bounds for $f$-Boolean Hidden Partition in terms of the sign degree $d$ of $f$, proving a conjecture of Doriguello and Montanaro (TQC 2020). Their prior work gave logarithmic communication upper bounds for classical protocols when $d \le 1$ and quantum protocols when $d \le 2$, as well as polynomial lower bounds for certain structured functions with larger sign degree. We show that for every $f$ of sign degree $d \ge 2$, the randomized classical communication complexity of this problem is $\Theta(n^{1-1/d})$ while its quantum communication complexity lies between $\Omega(n^{1-2/d})$ and $O(n^{1-1/\lceil d/2 \rceil} \log n)$. This completely characterizes the functions $f$ admitting polynomial quantum advantage as those for which $d \ge 2$, with a new infinite family of exponential separations given by the case $d = 2$.</p></div></details><details class="simple"><summary>In simple words</summary><div><p>In a classic communication game, Bob checks whether pairs of Alice’s bits are equal or different, and a
-       quantum message can be exponentially shorter than a classical one. We replace “equal or different” with any rule
-       on small groups of bits. One number attached to the rule, its sign degree, tells you how much a quantum message helps.
-       This settles a conjecture from 2020.</p></div></details></div>
+<p>We establish classical and quantum communication bounds for $f$-Boolean Hidden Partition in terms of the sign degree $d$ of $f$, proving a conjecture of Doriguello and Montanaro (TQC 2020). Their prior work gave logarithmic communication upper bounds for classical protocols when $d \le 1$ and quantum protocols when $d \le 2$, as well as polynomial lower bounds for certain structured functions with larger sign degree. We show that for every $f$ of sign degree $d \ge 2$, the randomized classical communication complexity of this problem is $\Theta(n^{1-1/d})$ while its quantum communication complexity lies between $\Omega(n^{1-2/d})$ and $O(n^{1-1/\lceil d/2 \rceil} \log n)$. This completely characterizes the functions $f$ admitting polynomial quantum advantage as those for which $d \ge 2$, with a new infinite family of exponential separations given by the case $d = 2$.</p></div></details><details class="simple"><summary>In simple words</summary><div><p>Alice has a long string and can send Bob one message. How short can the message be if Bob needs to learn one specific thing about the string? For a famous problem called Boolean Hidden Matching, a quantum message can be exponentially shorter than any classical message. This problem is the engine behind most known quantum advantages in communication and in streaming, but it is a single example. We study a whole family of problems of the same kind, where the task Bob has to solve on each small block of the string is given by an arbitrary function. We show that one number attached to this function, its sign degree, decides everything: how long a classical message must be, how long a quantum message must be, and whether quantum helps at all. This proves a conjecture of Doriguello and Montanaro.</p></div></details></div>
     </li>
     <li class="paper" id="convex" data-tags="queries polynomials">
       <p class="title"><a href="https://arxiv.org/abs/2609.09035">Near-Optimal Quantum Lower Bounds for Convex Optimization via Fourier Rank</a></p>
@@ -147,9 +152,7 @@
       <p class="venue">In submission, 2026</p>
       <p class="tags"><span class="tag queries">Queries</span><span class="tag polynomials">Polynomials</span></p>
       <p class="plinks"><a href="https://arxiv.org/abs/2609.09035">arXiv</a> <a href="https://arxiv.org/pdf/2609.09035">PDF</a></p>
-      <div class="more"><details class="abstract"><summary>Abstract</summary><div><p>We establish a linear quantum query lower bound for high-accuracy convex optimization over an explicit family of $n$-dimensional ellipsoids. We focus on linear optimization with an explicitly given objective, where the feasible set is accessed through a membership oracle. We show that any algorithm that, for every unit linear objective, returns an exactly feasible point with additive objective error $\Theta(n^{-1/2})$ requires $\Omega(n)$ membership queries, where the ellipsoids are contained in the unit ball. The same lower bound can be shown to hold if the returned point is only required to be approximately feasible, within $\Theta(n^{-3/2})$ distance from the feasible set. This resolves an open question posed by Chakrabarti, Childs, Li, and Wu (<em>Quantum</em>, 2020) and by van Apeldoorn, Gilyén, Gribling, and de Wolf (<em>Quantum</em>, 2020). Coupled with the upper bounds in these papers, the query complexity of high-accuracy convex optimization is characterized tightly up to logarithmic factors. The proof is built around a lower bound for determinant computation that is derived via a novel polynomial method based on Fourier-rank. In the continuous matrix phase-query model, computing the determinant of a real $n\times n$ matrix requires at least $n/2$ matrix-vector product queries. The construction also yields an $\Omega(n)$ phase-query lower bound for estimating the minimum eigenvalue of a real symmetric $n\times n$ matrix to additive accuracy $\Theta(n^{-2})$. These results extend the determinant and minimum-eigenvalue lower bounds of Childs, Hung, and Li (ICALP 2021) from finite fields to the real-valued setting. Based on the same constructions, we also prove an $\Omega(\min\{\sqrt\kappa,n\})$ gradient-query lower bound for constant-accuracy optimization of $1$-strongly convex and $\kappa$-smooth functions, which is optimal up to a logarithmic factor.</p></div></details><details class="simple"><summary>In simple words</summary><div><p>You want the best point of a convex region in n dimensions, but you can only ask “is this point inside?”.
-       Quantum algorithms for this need about n questions, and we show that you cannot do much better. On the way we show
-       that computing the determinant of a matrix also needs many questions, using a new version of the polynomial method.</p></div></details></div>
+      <div class="more"><details class="abstract"><summary>Abstract</summary><div><p>We establish a linear quantum query lower bound for high-accuracy convex optimization over an explicit family of $n$-dimensional ellipsoids. We focus on linear optimization with an explicitly given objective, where the feasible set is accessed through a membership oracle. We show that any algorithm that, for every unit linear objective, returns an exactly feasible point with additive objective error $\Theta(n^{-1/2})$ requires $\Omega(n)$ membership queries, where the ellipsoids are contained in the unit ball. The same lower bound can be shown to hold if the returned point is only required to be approximately feasible, within $\Theta(n^{-3/2})$ distance from the feasible set. This resolves an open question posed by Chakrabarti, Childs, Li, and Wu (<em>Quantum</em>, 2020) and by van Apeldoorn, Gilyén, Gribling, and de Wolf (<em>Quantum</em>, 2020). Coupled with the upper bounds in these papers, the query complexity of high-accuracy convex optimization is characterized tightly up to logarithmic factors. The proof is built around a lower bound for determinant computation that is derived via a novel polynomial method based on Fourier-rank. In the continuous matrix phase-query model, computing the determinant of a real $n\times n$ matrix requires at least $n/2$ matrix-vector product queries. The construction also yields an $\Omega(n)$ phase-query lower bound for estimating the minimum eigenvalue of a real symmetric $n\times n$ matrix to additive accuracy $\Theta(n^{-2})$. These results extend the determinant and minimum-eigenvalue lower bounds of Childs, Hung, and Li (ICALP 2021) from finite fields to the real-valued setting. Based on the same constructions, we also prove an $\Omega(\min\{\sqrt\kappa,n\})$ gradient-query lower bound for constant-accuracy optimization of $1$-strongly convex and $\kappa$-smooth functions, which is optimal up to a logarithmic factor.</p></div></details><details class="simple"><summary>In simple words</summary><div><p>Convex optimization is one of the applications people hope quantum computers will speed up. An algorithm for it learns about the problem by asking questions such as “is this point allowed?” Quantum algorithms were known that need about n such questions in dimension n, while classical algorithms need about n². Could a smarter quantum algorithm get by with far fewer questions, say √n? We prove that it cannot. About n questions are necessary, so the known quantum algorithms are essentially the best possible. The standard tool for results of this kind works for inputs made of bits and does not apply to problems with real numbers. We extend it with a new measure that we call Fourier rank, and with it we also prove limits for computing determinants and eigenvalues.</p></div></details></div>
     </li>
     <li class="paper" id="sosa" data-tags="streaming">
       <p class="title"><a href="https://arxiv.org/abs/2410.18922">How to Design a Quantum Streaming Algorithm Without Knowing Anything About Quantum Computing</a></p>
@@ -157,9 +160,7 @@
       <p class="venue">SOSA 2025. Poster at QIP 2025.</p>
       <p class="tags"><span class="tag streaming">Streaming</span></p>
       <p class="plinks"><a href="https://arxiv.org/abs/2410.18922">arXiv</a></p>
-      <div class="more"><a class="abstract-link" href="https://arxiv.org/abs/2410.18922">Abstract on arXiv</a><details class="simple"><summary>In simple words</summary><div><p>A recipe. Take a classical streaming algorithm, replace one part of it with a small quantum building block, and
-       you get a quantum algorithm that uses much less memory. You never have to think about quantum mechanics while doing it.
-       Several earlier quantum advantages follow this way.</p></div></details></div>
+      <div class="more"><a class="abstract-link" href="https://arxiv.org/abs/2410.18922">Abstract on arXiv</a><details class="simple"><summary>In simple words</summary><div><p>Quantum streaming algorithms are hard to design and hard to read, because the people who know streaming usually do not know quantum computing. We show that the quantum part of the known algorithms is always the same small component: a sketch that samples pairs of items from the stream in a way no classical memory of the same size can. We describe this component once, with guarantees stated in purely classical language. After that, a quantum streaming algorithm is an ordinary classical algorithm that calls this component as a black box. The three known quantum streaming advantages of this type become short and simple in this form, and anyone who knows classical algorithms can now design new ones.</p></div></details></div>
     </li>
     <li class="paper" id="maxdicut" data-tags="streaming">
       <p class="title"><a href="https://arxiv.org/abs/2311.14123">Exponential Quantum Space Advantage for Approximating Maximum Directed Cut in the Streaming Model</a></p>
@@ -167,10 +168,7 @@
       <p class="venue">STOC 2024. Talk at QIP 2024.</p>
       <p class="tags"><span class="tag streaming">Streaming</span></p>
       <p class="plinks"><a href="https://arxiv.org/abs/2311.14123">arXiv</a> <a href="https://eccc.weizmann.ac.il/report/2023/189">ECCC</a></p>
-      <div class="more"><a class="abstract-link" href="https://arxiv.org/abs/2311.14123">Abstract on arXiv</a><details class="simple"><summary>In simple words</summary><div><p>A huge network of one-way links arrives one link at a time. You want to estimate how well the nodes can be split
-       into two groups so that many links point from the first group to the second. With a few qubits you can get a good
-       estimate, while any classical algorithm needs exponentially more memory. This was the first problem of this natural
-       kind with such a gap.</p></div></details></div>
+      <div class="more"><a class="abstract-link" href="https://arxiv.org/abs/2311.14123">Abstract on arXiv</a><details class="simple"><summary>In simple words</summary><div><p>Imagine a huge directed graph whose edges fly past once, and a computer that can remember only a tiny fraction of them. The task is to estimate the size of the best “directed cut” of the graph, a classic optimization problem. A classical computer with small memory cannot do better than a certain accuracy (a 4/9 fraction of the true answer) unless its memory grows like the square root of the graph size. We give a quantum algorithm that beats this accuracy with exponentially less memory, only polylogarithmically many qubits. It was the first exponential quantum memory advantage for a natural streaming problem, one that people cared about before anyone asked about quantum. It is also the first proven exponential quantum advantage of any kind for approximating a discrete optimization problem.</p></div></details></div>
     </li>
     <li class="paper" id="oracle-id" data-tags="queries polynomials">
       <p class="title"><a href="https://arxiv.org/abs/2303.03921">Approximate Degree Lower Bounds for Oracle Identification Problems</a></p>
@@ -178,8 +176,7 @@
       <p class="venue">TQC 2023</p>
       <p class="tags"><span class="tag queries">Queries</span><span class="tag polynomials">Polynomials</span></p>
       <p class="plinks"><a href="https://arxiv.org/abs/2303.03921">arXiv</a> <a href="https://www.youtube.com/watch?v=V4CeHZkiCBY&amp;list=PLmE1-ewBrbkiu3xoESxWYOW4zTxmpP8Sb&amp;index=10">Talk (20 min)</a></p>
-      <div class="more"><a class="abstract-link" href="https://arxiv.org/abs/2303.03921">Abstract on arXiv</a><details class="simple"><summary>In simple words</summary><div><p>A hidden word is chosen from a known dictionary, and you find it by asking about its letters. We prove how many
-       questions a quantum algorithm needs for several such problems, using polynomials.</p></div></details></div>
+      <div class="more"><a class="abstract-link" href="https://arxiv.org/abs/2303.03921">Abstract on arXiv</a><details class="simple"><summary>In simple words</summary><div><p>Binary search finds a number between 1 and N with about log N comparisons. A quantum computer can do slightly better, but only by a constant factor, and this has been known for a long time. The known proof, however, uses a technique whose results do not carry over to other settings, such as communication or algorithms with tiny success probability. The more robust technique, the polynomial method, gave only a much weaker bound for this problem. We close most of this gap. We show that the polynomial method gives a nearly optimal bound for ordered search and for a related problem of finding a hidden string. The proof takes an unusual route: it turns efficient communication protocols into limits on query algorithms.</p></div></details></div>
     </li>
     <li class="paper" id="k-valued" data-tags="">
       <p class="title">Existence of Universal Functions for the Class of Linear k-Valued Functions with Moderate k</p>
@@ -196,7 +193,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
 <script defer src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
 <script defer src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/contrib/auto-render.min.js"
-  onload="renderMathInElement(document.getElementById('papers'), {delimiters: [{left: '$', right: '$', display: false}]})"></script>
+  onload="renderMathInElement(document.querySelector('main'), {delimiters: [{left: '$', right: '$', display: false}]})"></script>
 <script>
 (function () {
   var chips = document.querySelectorAll('.filters button');
