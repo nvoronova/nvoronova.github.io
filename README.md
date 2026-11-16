@@ -1,6 +1,6 @@
 # Research homepage
 
-Plain HTML and CSS, four pages: `index.html` (home), `research.html`, `talks.html`, `teaching.html`. No build step, no Jekyll, no dependencies. Edit a page and push.
+Plain HTML and CSS, four pages (this is the simple version; the version with research topics and "In simple words" explanations is kept on the `full-version` branch): `index.html` (home), `research.html`, `talks.html`, `teaching.html`. No build step, no Jekyll, no dependencies. Edit a page and push.
 
 The navigation bar is copied at the top of each page. If you add or rename a page, update it in all four files.
 
