@@ -75,7 +75,7 @@ p { margin: 0 0 1rem; }
 /* Home intro */
 .intro { display: grid; grid-template-columns: 1fr auto; gap: 1.5rem; align-items: start; padding-top: 1.5rem; }
 .aka { font-family: var(--sans); color: var(--muted); margin: 0 0 1.2rem; }
-.portrait { width: 132px; height: 132px; object-fit: cover; border-radius: 50%; border: 1px solid var(--rule); }
+.portrait { width: 168px; height: 168px; object-fit: cover; border-radius: 50%; border: 1px solid var(--rule); }
 .links { list-style: none; padding: 0; margin: 0.25rem 0 0; display: flex; flex-wrap: wrap; gap: 0.35rem 1.1rem; font-family: var(--sans); }
 
 .block { padding: 2.25rem 0 0.5rem; }
