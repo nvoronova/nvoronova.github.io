@@ -1,6 +1,6 @@
 # Research homepage
 
-Plain HTML and CSS, four pages (this is the simple version; the version with research topics and "In simple words" explanations is kept on the `full-version` branch): `index.html` (home), `research.html`, `talks.html`, `teaching.html`. No build step, no Jekyll, no dependencies. Edit a page and push.
+Plain HTML and CSS, three pages: `index.html` (home), `research.html` (papers), `teaching.html`. This is the simple version. The version with research topics, "In simple words" explanations and a Talks page is kept on the `full-version` branch. No build step, no Jekyll, no dependencies. Edit a page and push.
 
 The navigation bar is copied at the top of each page. If you add or rename a page, update it in all four files.
 
@@ -9,9 +9,8 @@ The navigation bar is copied at the top of each page. If you add or rename a pag
 1. Put your email address in `index.html` (search for `YOUR_EMAIL`).
 2. Add your Google Scholar URL, or delete that line (search for `scholar.google.com`).
 3. Add `photo.jpg` (square, at least 200×200 px) to this folder. If `photo.jpg` is missing, the page simply shows no photo.
-4. Re-host anything that only lives on Owlstown: QIP 2024 slides, the qualifying-exam slides, the CRA-WP poster. Put them in a `files/` folder and link them from `talks.html` (there is a TODO next to QIP 2024).
+4. Re-host anything that only lives on Owlstown: QIP 2024 slides, the qualifying-exam slides, the CRA-WP poster. Put them in a `files/` folder. (The Talks page that linked them is on the `full-version` branch for now.)
 5. If you want the job search visible, uncomment the job-market line in `index.html`.
-6. Fill in the dates of the invited seminars in `talks.html`.
 
 ## Option A: GitHub Pages, free
 
